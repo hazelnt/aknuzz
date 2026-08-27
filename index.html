@@ -75,7 +75,7 @@ nav.scrolled ul li a {
 nav ul li a:hover {
   color: #00c896;
 }
-/* ---------- HERO ---------- */
+/* HERO */
 .hero {
   position: sticky;
   top: 0;
@@ -99,7 +99,7 @@ nav ul li a:hover {
   height: 100%;
   background: rgba(0, 0, 0, 0);
 }
-/* ---------- ABOUT ---------- */
+/* ABOUT */
 section {
   padding: 100px 10%;
 }
@@ -160,7 +160,7 @@ h2 {
   text-decoration: none;
   font-weight: bold;
 }
-/* ---------- ACTIVITIES ---------- */
+/* ACTIVITIES */
 .activities {
   padding: 0 5% 60px;
   margin-top: -70px;
@@ -180,7 +180,7 @@ h2 {
   color: #666;
   font-size: 18px;
 }
-/* ---------- COVERFLOW ---------- */
+/* COVERFLOW */
 .coverflow {
   position: relative;
   width: 100%;
@@ -195,11 +195,9 @@ h2 {
   position: absolute;
   width: 210px;
   height: 280px;
-  /* BIKIN SUDUT BULAT */
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  /* PERPINDAHAN LEBIH CEPAT */
   transition:
     transform 0.35s ease,
     opacity 0.35s ease,
@@ -208,7 +206,6 @@ h2 {
   opacity: 0;
   pointer-events: none;
 }
-/* GAMBAR */
 .coverflow .card img {
   width: 100%;
   height: 100%;
@@ -216,7 +213,6 @@ h2 {
   display: block;
   border-radius: inherit;
 }
-/* ACTIVE */
 .coverflow .card.active {
   transform: translateX(0) scale(1);
   opacity: 1;
@@ -265,7 +261,7 @@ h2 {
   color: #666;
   line-height: 1.5;
 }
-/* ---------- OVERLAY (diperbaiki sesuai contoh) ---------- */
+/* OVERLAY (diperbaiki sesuai contoh) */
 .activity-overlay {
   z-index: 12000;
   position: fixed;
@@ -285,7 +281,7 @@ h2 {
 @keyframes fadeOverlay {
   from {
     opacity: 0;
-  }
+ }
   to {
     opacity: 1;
   }
@@ -478,9 +474,7 @@ h2 {
   font-size: 16px;
   font-weight: 600;
 }
-/* =====================================================
-   DEPARTMENT SECTION
-===================================================== */
+/* DEPARTMENT SECTION */
 .department-section {
   padding: 100px 7%;
   background: #f7f8f3;
@@ -510,18 +504,14 @@ h2 {
   color: #707771;
   line-height: 1.8;
 }
-/* =====================================================
-   CARD GRID
-===================================================== */
+/* CARD GRID */
 .department-card-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 15px;
   width: 100%;
 }
-/* =====================================================
-   CARD
-===================================================== */
+/* CARD */
 .department-card {
   height: 300px;
   perspective: 1200px;
@@ -538,9 +528,7 @@ h2 {
 .department-card:hover .department-card-inner {
   transform: rotateY(180deg);
 }
-/* =====================================================
-   FRONT + BACK
-===================================================== */
+/*  FRONT + BACK */
 .department-card-front,
 .department-card-back {
   position: absolute;
@@ -551,9 +539,7 @@ h2 {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-/* =====================================================
-   FRONT
-===================================================== */
+/* FRONT */
 .department-card-front {
   display: flex;
   flex-direction: column;
@@ -600,9 +586,7 @@ h2 {
   line-height: 1.4;
   color: #777d78;
 }
-/* =====================================================
-   BACK
-===================================================== */
+/*  BACK */
 .department-card-back {
   padding: 23px;
   display: flex;
@@ -633,9 +617,7 @@ h2 {
   letter-spacing: 1.3px;
   opacity: .75;
 }
-/* =====================================================
-   DEPARTMENT COLORS
-===================================================== */
+/* DEPARTMENT COLORS */
 .department-card-green {
   --department-color: #3f7d50;
 }
@@ -655,9 +637,7 @@ h2 {
 .department-card-earth {
   --department-color: #81745a;
 }
-/* =====================================================
-   DEPARTMENT PROFILE MODAL
-===================================================== */
+/* DEPARTMENT PROFILE MODAL */
 .department-profile-modal {
   position: fixed;
   inset: 0;
@@ -692,8 +672,7 @@ h2 {
   border-radius: 30px;
   background: #f8f8f3;
   transform: translateY(30px) scale(.96);
-  transition:
-        transform .4s cubic-bezier(.2,.7,.2,1);
+  transition: transform .4s cubic-bezier(.2,.7,.2,1);
 }
 .department-profile-modal.active
 .department-profile-window {
@@ -717,9 +696,7 @@ h2 {
 .department-profile-close:hover {
   transform: rotate(90deg);
 }
-/* =====================================================
-   MODAL HEADER
-===================================================== */
+/* MODAL HEADER */
 .department-profile-header {
   max-width: 750px;
   padding-bottom: 35px;
@@ -743,9 +720,7 @@ h2 {
   line-height: 1.8;
   color: #68706b;
 }
-/* =====================================================
-   SECTION HEADINGS
-===================================================== */
+/* SECTION HEADINGS */
 .department-profile-section-heading {
   display: flex;
   align-items: center;
@@ -763,18 +738,14 @@ h2 {
   font-size: 19px;
   color: #26372c;
 }
-/* =====================================================
-   SECTIONS
-===================================================== */
+/*SECTIONS*/
 .department-profile-manager,
 .department-profile-team,
 .department-profile-about,
 .department-profile-programs {
   margin-top: 38px;
 }
-/* =====================================================
-   PROJECT MANAGER
-===================================================== */
+/* PROJECT MANAGER */
 .department-manager-card {
   display: grid;
   grid-template-columns: 190px 1fr;
@@ -815,9 +786,7 @@ h2 {
   line-height: 1.7;
   color: #68706b;
 }
-/* =====================================================
-   MEMBERS
-===================================================== */
+/*MEMBERS */
 .department-member-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -854,9 +823,7 @@ h2 {
   font-size: 9px;
   color: #7c837e;
 }
-/* =====================================================
-   ABOUT
-===================================================== */
+/* ABOUT */
 .department-profile-about {
   padding: 32px 0;
   border-top: 1px solid #dfe2dc;
@@ -869,10 +836,7 @@ h2 {
   line-height: 1.9;
   color: #68706b;
 }
-/* =====================================================
-   PROGRAMS
-   2 COLUMNS
-===================================================== */
+/*PROGRAMS 2 COLUMNS */
 .department-program-list {
   display: grid;
   grid-template-columns:
@@ -936,9 +900,7 @@ h2 {
   letter-spacing: 1px;
   color: #477a55;
 }
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* RESPONSIVE */
 @media (max-width: 1100px) {
   .department-card-grid {
     grid-template-columns:
@@ -1147,10 +1109,7 @@ footer {
     max-height: 180px;
   }
 }
-/* =====================================================
-   MODERN DEPARTMENTS / FOUNDERS / PEOPLE
-===================================================== */
-/* ---------- DEPARTMENT SECTION ---------- */
+/*MODERN DEPARTMENTS / FOUNDERS / PEOPLE DEPARTMENT SECTION  */
 .departments-modern {
   padding:110px 7% 80px;
   background:#f7f8f3;
@@ -1239,9 +1198,7 @@ footer {
   color:#65806b;
 }
 /* PEOPLE / FOUNDER CARDS */
-.member-card,
-.founder-card,
-.people-card {
+.member-card,.founder-card,.people-card {
   border:1px solid #e1e6e1;
   background:#fff;
   overflow:hidden;
@@ -1259,9 +1216,7 @@ footer {
   display:block;
   transition:transform .5s ease;
 }
-.member-card:hover .person-photo img,
-.founder-card:hover .person-photo img,
-.people-card:hover .person-photo img {
+.member-card:hover .person-photo img,.founder-card:hover .person-photo img,.people-card:hover .person-photo img {
   transform:scale(1.04);
 }
 .person-meta {
@@ -1752,9 +1707,7 @@ footer {
     grid-template-columns:40% 60%;
   }
 }
-/* =====================================================
-   FINAL DEPARTMENT CARD + PEOPLE CAROUSEL POLISH
-===================================================== */
+/* FINAL DEPARTMENT CARD + PEOPLE CAROUSEL POLISH */
 .department-list-modern {
   display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));
@@ -1996,12 +1949,8 @@ footer {
 </style>
 
 <style id="new-page-flow">
-/* =====================================================
-   NEW PAGE FLOW / HERO OVERLAP / STATS SECTIONS
-   ===================================================== */
-
-/* Every content section sits above the sticky hero.
-   Opaque backgrounds prevent the hero from leaking through. */
+/*NEW PAGE FLOW / HERO OVERLAP / STATS SECTIONS*/
+/* Every content section sits above the sticky hero. Opaque backgrounds prevent the hero from leaking through. */
 #about,
 #departments,
 #activities,
@@ -2013,41 +1962,33 @@ footer {
   position: relative;
   z-index: 2;
 }
-
 /* Give each major section its own visual background. */
 #about {
   background: #f8f6f1;
 }
-
 #departments {
   background: #f1f5ef;
 }
-
 #activities {
   background: #ffffff;
 }
-
 .founders-section {
   background: #f7f8f3;
 }
-
 .people-section {
   background: #eef4ef;
 }
-
 /* More breathing room between Activities and Everyone Who Joined. */
 .people-section {
   margin-top: 90px !important;
   padding-top: 95px !important;
   padding-bottom: 105px !important;
 }
-
 /* Founders is also separated as its own visual block. */
 .founders-section {
   margin-top: 0 !important;
   padding: 95px 7% 90px !important;
 }
-
 /* ---------- IMPACT SNAPSHOT ---------- */
 .impact-section {
   padding: 110px 7%;
@@ -2055,20 +1996,16 @@ footer {
     radial-gradient(circle at 15% 20%, rgba(88, 143, 99, .10), transparent 30%),
     #ffffff;
 }
-
 .impact-inner {
   max-width: 1180px;
   margin: 0 auto;
 }
-
 .impact-heading {
   max-width: 760px;
   margin: 0 auto 55px;
   text-align: center;
 }
-
-.impact-heading span,
-.stats-heading span {
+.impact-heading span,.stats-heading span {
   display: block;
   font-size: 11px;
   font-weight: 700;
@@ -2076,29 +2013,22 @@ footer {
   color: #65806b;
   text-transform: uppercase;
 }
-
-.impact-heading h2,
-.stats-heading h2 {
+.impact-heading h2,.stats-heading h2 {
   margin: 12px 0 18px;
   font-size: clamp(40px, 5vw, 64px);
   line-height: .95;
   color: #1f3025;
 }
-
-.impact-heading h2 em,
-.stats-heading h2 em {
+.impact-heading h2 em,.stats-heading h2 em {
   font-style: normal;
   color: #65806b;
 }
-
-.impact-heading p,
-.stats-heading p {
+.impact-heading p,.stats-heading p {
   max-width: 650px;
   margin: 0 auto;
   color: #707771;
   line-height: 1.8;
 }
-
 .impact-highlight {
   max-width: 980px;
   margin: 0 auto;
@@ -2108,7 +2038,6 @@ footer {
   text-align: center;
   box-shadow: 0 25px 60px rgba(31, 68, 51, .16);
 }
-
 .impact-highlight .impact-number {
   display: block;
   font-size: clamp(58px, 8vw, 100px);
@@ -2116,42 +2045,35 @@ footer {
   font-weight: 800;
   letter-spacing: -4px;
 }
-
 .impact-highlight h3 {
   margin: 18px 0 10px;
   font-size: clamp(24px, 3vw, 34px);
 }
-
 .impact-highlight p {
   max-width: 650px;
   margin: 0 auto;
   color: rgba(255,255,255,.78);
   line-height: 1.7;
 }
-
 /* ---------- DATA / METRICS ---------- */
 .stats-section {
   padding: 110px 7%;
   background: #f7f8f3;
 }
-
 .stats-inner {
   max-width: 1180px;
   margin: 0 auto;
 }
-
 .stats-heading {
   max-width: 760px;
   margin: 0 auto 55px;
   text-align: center;
 }
-
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
-
 .stat-card {
   min-height: 230px;
   padding: 35px;
@@ -2162,7 +2084,6 @@ footer {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .stat-card .stat-value {
   font-size: clamp(42px, 5vw, 64px);
   font-weight: 800;
@@ -2170,29 +2091,24 @@ footer {
   color: #1f6e43;
   letter-spacing: -2px;
 }
-
 .stat-card h3 {
   margin-top: 24px;
   font-size: 21px;
   color: #1f3025;
 }
-
 .stat-card p {
   margin-top: 8px;
   color: #707771;
   font-size: 13px;
   line-height: 1.7;
 }
-
 /* Keep the sticky hero from behaving like a background inside sections. */
 body {
   background: #f5f5f5;
 }
-
 .hero + #about {
   box-shadow: 0 -20px 50px rgba(0,0,0,.08);
 }
-
 /* Mobile */
 @media (max-width: 800px) {
   .people-section {
@@ -2200,24 +2116,19 @@ body {
     padding-top: 70px !important;
     padding-bottom: 80px !important;
   }
-
   .founders-section {
     padding: 75px 5% !important;
   }
-
   .impact-section,
   .stats-section {
     padding: 80px 5%;
   }
-
   .impact-highlight {
     padding: 42px 24px;
   }
-
   .stats-grid {
     grid-template-columns: 1fr;
   }
-
   .stat-card {
     min-height: 190px;
   }
@@ -2250,9 +2161,7 @@ body {
   margin-top: 20px !important;
   padding-top: 0 !important;
 }
-.departments-modern .modern-section-heading,
-.founders-section .modern-section-heading,
-.people-section .modern-section-heading {
+.departments-modern .modern-section-heading,.founders-section .modern-section-heading,.people-section .modern-section-heading {
   margin-top: 0 !important;
   margin-bottom: 10px !important;
 }
@@ -2263,8 +2172,7 @@ body {
 .department-card {
   height: 300px !important;
 }
-.department-card-front,
-.department-card-back {
+.department-card-front,.department-card-back {
   border-radius: 14px !important;
 }
 /* ===== Department popup: visibility / stacking ===== */
@@ -2522,7 +2430,6 @@ body {
     transform: scale(1);
   }
 }
-
 /* ===== FINAL SECTION FLOW OVERRIDES ===== */
 #about {
   padding-top: 95px !important;
@@ -2657,29 +2564,44 @@ footer {
 }
 
 /* Keep backgrounds completely opaque. */
-#about { background: #f8f6f1 !important; }
-#departments { background: #f1f5ef !important; }
-#activities { background: #ffffff !important; }
-.founders-section { background: #f7f8f3 !important; }
-.people-section { background: #eef4ef !important; }
-.impact-section { background: #ffffff !important; }
-.stats-section { background: #f7f8f3 !important; }
-#contact { background: #1f4433 !important; }
-footer { background: #172b20 !important; }
-
+#about {
+  background: #f8f6f1 !important; 
+}
+#departments { 
+    background: #f1f5ef !important; 
+}
+#activities {
+     background: #ffffff !important;
+     }
+.founders-section {
+     background: #f7f8f3 !important; 
+    }
+.people-section {
+     background: #eef4ef !important; 
+    }
+.impact-section {
+     background: #ffffff !important; 
+    }
+.stats-section {
+     background: #f7f8f3 !important; 
+    }
+#contact {
+     background: #1f4433 !important; 
+    }
+footer {
+     background: #172b20 !important; 
+    }
 /* The page needs enough content after the hero for the
    sticky layer to remain visible until covered. */
 body {
   background: #172b20 !important;
 }
-
 /* Mobile: same effect, slightly softer shadow. */
 @media (max-width: 700px) {
   #about {
     box-shadow: 0 -16px 35px rgba(0,0,0,.12) !important;
   }
 }
-
 </style>
 </head>
 <body>
@@ -2752,9 +2674,7 @@ body {
       </div>
     </div>
   </section>
-  <!-- =====================================================
-     DEPARTMENT SECTION
-===================================================== -->
+  <!-- DEPARTMENT SECTION-->
 <section id="departments" class="departments-modern">
   <div class="modern-section-heading">
     <span>OUR DEPARTMENTS</span>
@@ -3160,9 +3080,7 @@ coverflowInterval = setInterval(nextCard, 2000);
   openOverlay(card);
 });
 });
-/* =====================================================
-   DEPARTMENTS / FOUNDERS / PEOPLE
-===================================================== */
+/*  DEPARTMENTS / FOUNDERS / PEOPLE */
 const departmentData=[
   {
     name:"Main & Support",
