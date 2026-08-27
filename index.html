@@ -30,6 +30,11 @@ nav {
   transition: 0.4s;
   z-index: 1000;
 }
+nav.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
 nav.scrolled {
   background: white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -72,68 +77,27 @@ nav ul li a:hover {
 }
 /* ---------- HERO ---------- */
 .hero {
-  position: relative;
+  position: sticky;
+  top: 0;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
+  z-index: 0;
+  isolation: isolate;
 }
-.slide {
+.hero-video {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: 1s;
-}
-.slide.active {
-  opacity: 1;
-}
-.slide img {
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0);
-}
-.hero-content {
-  position: absolute;
-  top: 80%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  z-index: 5;
-}
-.hero-content h1 {
-  font-size: 60px;
-  margin-bottom: 20px;
-}
-.hero-content p {
-  font-size: 20px;
-}
-.dots {
-  position: absolute;
-  bottom: 40px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  z-index: 10;
-}
-.dot {
-  width: 15px;
-  height: 15px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.5;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.dot.active {
-  opacity: 1;
-  transform: scale(1.3);
 }
 /* ---------- ABOUT ---------- */
 section {
@@ -195,13 +159,6 @@ h2 {
   color: #51d337;
   text-decoration: none;
   font-weight: bold;
-}
-.hero-content h1 {
-  background: linear-gradient(90deg, #1a8629,  #f4b325);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-  text-decoration: none;
 }
 /* ---------- ACTIVITIES ---------- */
 .activities {
@@ -354,6 +311,9 @@ h2 {
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
   animation: popup 0.4s ease;
+  position: fixed !important;
+  z-index: 99999 !important;
+  inset: 0;
 }
 .close-btn {
   position: absolute;
@@ -1075,22 +1035,28 @@ footer {
 }
 @media (max-width: 768px) {
   nav {
-    padding: 16px 24px;
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    row-gap: 10px;
   }
   nav.scrolled {
-    padding: 12px 24px;
+    padding: 10px 20px;
+  }
+  .logo img {
+    height: 34px;
+  }
+  nav ul {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 6px;
   }
   nav ul li {
-    margin-left: 18px;
+    margin-left: 0;
+    margin: 0 10px;
   }
   nav ul li a {
     font-size: 14px;
-  }
-  .hero-content h1 {
-    font-size: 32px;
-  }
-  .hero-content p {
-    font-size: 16px;
   }
   .about-container {
     flex-direction: column;
@@ -2022,6 +1988,236 @@ footer {
   }
 }
 </style>
+
+<style id="new-page-flow">
+/* =====================================================
+   NEW PAGE FLOW / HERO OVERLAP / STATS SECTIONS
+   ===================================================== */
+
+/* Every content section sits above the sticky hero.
+   Opaque backgrounds prevent the hero from leaking through. */
+#about,
+#departments,
+#activities,
+.founders-section,
+.people-section,
+.impact-section,
+.stats-section,
+.contact-modern {
+  position: relative;
+  z-index: 2;
+}
+
+/* Give each major section its own visual background. */
+#about {
+  background: #f8f6f1;
+}
+
+#departments {
+  background: #f1f5ef;
+}
+
+#activities {
+  background: #ffffff;
+}
+
+.founders-section {
+  background: #f7f8f3;
+}
+
+.people-section {
+  background: #eef4ef;
+}
+
+/* More breathing room between Activities and Everyone Who Joined. */
+.people-section {
+  margin-top: 90px !important;
+  padding-top: 95px !important;
+  padding-bottom: 105px !important;
+}
+
+/* Founders is also separated as its own visual block. */
+.founders-section {
+  margin-top: 0 !important;
+  padding: 95px 7% 90px !important;
+}
+
+/* ---------- IMPACT SNAPSHOT ---------- */
+.impact-section {
+  padding: 110px 7%;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(88, 143, 99, .10), transparent 30%),
+    #ffffff;
+}
+
+.impact-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.impact-heading {
+  max-width: 760px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.impact-heading span,
+.stats-heading span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #65806b;
+  text-transform: uppercase;
+}
+
+.impact-heading h2,
+.stats-heading h2 {
+  margin: 12px 0 18px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: .95;
+  color: #1f3025;
+}
+
+.impact-heading h2 em,
+.stats-heading h2 em {
+  font-style: normal;
+  color: #65806b;
+}
+
+.impact-heading p,
+.stats-heading p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #707771;
+  line-height: 1.8;
+}
+
+.impact-highlight {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 55px 60px;
+  background: #1f4433;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(31, 68, 51, .16);
+}
+
+.impact-highlight .impact-number {
+  display: block;
+  font-size: clamp(58px, 8vw, 100px);
+  line-height: .9;
+  font-weight: 800;
+  letter-spacing: -4px;
+}
+
+.impact-highlight h3 {
+  margin: 18px 0 10px;
+  font-size: clamp(24px, 3vw, 34px);
+}
+
+.impact-highlight p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: rgba(255,255,255,.78);
+  line-height: 1.7;
+}
+
+/* ---------- DATA / METRICS ---------- */
+.stats-section {
+  padding: 110px 7%;
+  background: #f7f8f3;
+}
+
+.stats-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.stats-heading {
+  max-width: 760px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.stat-card {
+  min-height: 230px;
+  padding: 35px;
+  background: #fff;
+  border: 1px solid rgba(31,48,37,.10);
+  box-shadow: 0 12px 30px rgba(31,48,37,.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-card .stat-value {
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 800;
+  line-height: .95;
+  color: #1f6e43;
+  letter-spacing: -2px;
+}
+
+.stat-card h3 {
+  margin-top: 24px;
+  font-size: 21px;
+  color: #1f3025;
+}
+
+.stat-card p {
+  margin-top: 8px;
+  color: #707771;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Keep the sticky hero from behaving like a background inside sections. */
+body {
+  background: #f5f5f5;
+}
+
+.hero + #about {
+  box-shadow: 0 -20px 50px rgba(0,0,0,.08);
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .people-section {
+    margin-top: 55px !important;
+    padding-top: 70px !important;
+    padding-bottom: 80px !important;
+  }
+
+  .founders-section {
+    padding: 75px 5% !important;
+  }
+
+  .impact-section,
+  .stats-section {
+    padding: 80px 5%;
+  }
+
+  .impact-highlight {
+    padding: 42px 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    min-height: 190px;
+  }
+}
+
+</style>
 <style id="patch-overrides">
 /* ===== Section-to-section spacing (About -> Departments -> Activities -> Founders -> People) ===== */
 #about {
@@ -2294,11 +2490,11 @@ footer {
   pointer-events: none;
 }
 .page-loader-logo {
-  width: 180px;
+  width: 300px;
   max-width: 45vw;
   height: auto;
   opacity: 0;
-  transform: scale(0.7);
+  transform: scale(0.5);
   animation: pageLoaderFadeIn 1s ease forwards;
 }
 @keyframes pageLoaderFadeIn {
@@ -2311,6 +2507,164 @@ footer {
     transform: scale(1);
   }
 }
+
+/* ===== FINAL SECTION FLOW OVERRIDES ===== */
+#about {
+  padding-top: 95px !important;
+  padding-bottom: 95px !important;
+  background: #f8f6f1 !important;
+}
+
+#departments {
+  padding-top: 105px !important;
+  padding-bottom: 105px !important;
+  background: #f1f5ef !important;
+}
+
+#activities {
+  margin-top: 0 !important;
+  padding-top: 105px !important;
+  padding-bottom: 105px !important;
+  background: #ffffff !important;
+}
+
+.founders-section {
+  margin-top: 0 !important;
+  padding-top: 95px !important;
+  padding-bottom: 90px !important;
+  background: #f7f8f3 !important;
+}
+
+.people-section {
+  margin-top: 0 !important;
+  padding-top: 105px !important;
+  padding-bottom: 105px !important;
+  background: #eef4ef !important;
+}
+
+.impact-section {
+  margin-top: 0 !important;
+  background: #ffffff !important;
+}
+
+.stats-section {
+  margin-top: 0 !important;
+  background: #f7f8f3 !important;
+}
+
+.contact-modern {
+  position: relative;
+  z-index: 2;
+  background: #1f4433 !important;
+}
+
+@media (max-width: 700px) {
+  #about {
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+  }
+
+  #departments,
+  #activities {
+    padding-top: 75px !important;
+    padding-bottom: 75px !important;
+  }
+
+  .founders-section,
+  .people-section {
+    padding-top: 75px !important;
+    padding-bottom: 75px !important;
+  }
+}
+
+</style>
+<style id="stacked-hero-final">
+
+/* =====================================================
+   STACKED HERO OVERLAP — FINAL
+   Each following section physically covers the hero
+   while scrolling, instead of showing it as a background.
+   ===================================================== */
+
+/* Hero stays behind everything and fills the viewport. */
+.hero {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+}
+
+/* The hero itself must not become the background of content. */
+.hero-video {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 0 !important;
+}
+
+/* Every section is an opaque sheet above the hero.
+   These z-indexes create the stacking effect. */
+#about,
+#departments,
+#activities,
+.founders-section,
+.people-section,
+.impact-section,
+.stats-section,
+#contact,
+footer {
+  position: relative !important;
+  z-index: 10 !important;
+  isolation: isolate !important;
+}
+
+/* Give the first section a strong overlap edge. */
+#about {
+  margin-top: 0 !important;
+  box-shadow: 0 -25px 55px rgba(0,0,0,.14) !important;
+}
+
+/* Do NOT make later sections sticky. They simply scroll upward
+   and cover the layer underneath them. */
+#departments,
+#activities,
+.founders-section,
+.people-section,
+.impact-section,
+.stats-section,
+#contact,
+footer {
+  box-shadow: 0 -18px 45px rgba(0,0,0,.06) !important;
+}
+
+/* Keep backgrounds completely opaque. */
+#about { background: #f8f6f1 !important; }
+#departments { background: #f1f5ef !important; }
+#activities { background: #ffffff !important; }
+.founders-section { background: #f7f8f3 !important; }
+.people-section { background: #eef4ef !important; }
+.impact-section { background: #ffffff !important; }
+.stats-section { background: #f7f8f3 !important; }
+#contact { background: #1f4433 !important; }
+footer { background: #172b20 !important; }
+
+/* The page needs enough content after the hero for the
+   sticky layer to remain visible until covered. */
+body {
+  background: #172b20 !important;
+}
+
+/* Mobile: same effect, slightly softer shadow. */
+@media (max-width: 700px) {
+  #about {
+    box-shadow: 0 -16px 35px rgba(0,0,0,.12) !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2343,37 +2697,9 @@ footer {
   </nav>
   <!-- HERO -->
   <header class="hero">
-    <div class="slide active">
-      <div class="overlay"></div>
-      <img src="GYAF2026_V4_WebBanner.png" alt="Banner" />
-    </div>
-    <div class="slide">
-      <div class="overlay"></div>
-      <img src="01.jpg" alt="Slide 1" />
-    </div>
-    <div class="slide">
-      <div class="overlay"></div>
-      <img src="action.jpg." alt="Slide 2" />
-    </div>
-    <div class="slide">
-      <div class="overlay"></div>
-      <img src="BF792313-94DB-49D3-AFB0-C859D0E57840.jpg" alt="Slide 3" />
-    </div>
-    <div class="slide">
-      <div class="overlay"></div>
-      <img src="greenleap.jpeg" alt="Slide 4" />
-    </div>
-    <div class="hero-content">
-      <h1>Akar Nusa</h1>
-      <p>Nurturing the future</p>
-    </div>
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+    <video class="hero-video" autoplay muted loop playsinline poster="GYAF2026_V4_WebBanner.png">
+      <source src="video 1.mp4" type="video/mp4" />
+    </video>
   </header>
   <!-- ABOUT -->
   <section id="about" class="about">
@@ -2551,15 +2877,13 @@ footer {
     <div class="modern-section-heading compact">
       <span>THE FOUNDERS</span>
       <h2>The Roots of <em>Akar Nusa.</em></h2>
-      <p>Eight founder frames for the people who started Akar Nusa.</p>
     </div>
     <div id="founderGrid" class="founder-grid"></div>
   </section>
   <section class="people-section">
     <div class="modern-section-heading compact">
-      <span>EVERYONE WHO JOINED</span>
+      <span>Everyone who has ever been part of the journey</span>
       <h2>Akar Nusa <em>People.</em></h2>
-      <p>A smooth carousel for everyone who has ever been part of the journey.</p>
     </div>
     <div class="people-carousel-wrap">
       <button class="people-nav prev" id="peoplePrev" aria-label="Previous people">‹</button>
@@ -2569,7 +2893,7 @@ footer {
     <div class="people-dots" id="peopleDots"></div>
   </section>
 <!-- CONTACT -->
-<section id="contact" class="contact contact-modern"><div class="contact-inner"><div class="social-links"><a href="#" aria-label="YouTube" class="social-icon"><img src="https://cdn.simpleicons.org/youtube/ffffff" alt="YouTube"></a><a href="https://www.instagram.com/akarnusa_id?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="social-icon"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram"></a><a href="#" aria-label="TikTok" class="social-icon"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok"></a><a href="#" aria-label="LinkedIn" class="social-icon"><img src="https://cdn.simpleicons.org/linkedin/ffffff" alt="LinkedIn"></a><a href="#" aria-label="WhatsApp" class="social-icon"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="WhatsApp"></a></div></div></section>
+<section id="contact" class="contact contact-modern"><div class="contact-inner"><div class="social-links"><a href="#" aria-label="YouTube" class="social-icon"><img src="https://cdn.simpleicons.org/youtube/ffffff" alt="YouTube"></a><a href="https://www.instagram.com/akarnusa_id?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="social-icon"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram"></a><a href="#" aria-label="TikTok" class="social-icon"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="TikTok"></a><a href="#" aria-label="LinkedIn" class="social-icon"> <img src="https://cdn.simpleicons.org/linkedin/ffffff" alt="LinkedIn"></a><a href="#" aria-label="WhatsApp" class="social-icon"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="WhatsApp"></a></div></div></section>
 <footer>© 2026 Akar Nusa</footer>
 <script>
     (function() {
@@ -2579,31 +2903,82 @@ footer {
       window.addEventListener("scroll", () => {
         navbar.classList.toggle("scrolled", window.scrollY > 80);
       });
-      // ---------- HERO SLIDER ----------
-      const slides = document.querySelectorAll(".hero .slide");
-      const dots = document.querySelectorAll(".hero .dot");
-      let currentSlide = 0;
+      // ---------- HERO VIDEO + MUSIC (header only) ----------
+      const heroEl = document.querySelector(".hero");
+      const heroVideo = document.querySelector(".hero-video");
+      const heroMusic = document.getElementById("heroMusic");
+      const MUSIC_MAX_VOLUME = 0.6;
+      let musicStarted = false;
+      let fadeTimer = null;
       let coverflowInterval;
-      let slideInterval;
-      function goToSlide(index) {
-        slides.forEach((s, i) => s.classList.toggle("active", i === index));
-        dots.forEach((d, i) => d.classList.toggle("active", i === index));
-        currentSlide = index;
+
+      function clearFade() {
+        if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
       }
-      function nextSlide() {
-        goToSlide((currentSlide + 1) % slides.length);
+      function fadeMusicTo(target, onDone) {
+        clearFade();
+        const step = 0.05;
+        fadeTimer = setInterval(() => {
+          if (heroMusic.volume < target) {
+            heroMusic.volume = Math.min(heroMusic.volume + step, target);
+          } else if (heroMusic.volume > target) {
+            heroMusic.volume = Math.max(heroMusic.volume - step, target);
+          }
+          if (Math.abs(heroMusic.volume - target) < 0.001) {
+            heroMusic.volume = target;
+            clearFade();
+            if (onDone) onDone();
+          }
+        }, 60);
       }
-      function startSlideShow() {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, 4000);
+      function startMusic() {
+        if (musicStarted) return;
+        musicStarted = true;
+        heroMusic.volume = 0;
+        const playPromise = heroMusic.play();
+        if (playPromise && playPromise.then) {
+          playPromise.then(() => fadeMusicTo(MUSIC_MAX_VOLUME)).catch(() => { musicStarted = false; });
+        } else {
+          fadeMusicTo(MUSIC_MAX_VOLUME);
+        }
       }
-      dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-          goToSlide(i);
-          startSlideShow();
-        });
+      // Browsers require a user gesture before audio can play with sound,
+      // so start it on the first scroll/click/tap while the header is visible.
+      ["scroll", "click", "keydown", "touchstart"].forEach(evt => {
+        window.addEventListener(evt, () => {
+          if (window.scrollY < window.innerHeight) startMusic();
+        }, { once: true, passive: true });
       });
-      startSlideShow();
+
+      // As soon as the header scrolls out of view: fade the music out, pause
+      // it, and pause the video so nothing plays or shows below the header.
+      // Scrolling back up resumes both.
+      const heroObserver = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          if (heroVideo.paused) heroVideo.play().catch(() => {});
+          if (musicStarted) {
+            if (heroMusic.paused) heroMusic.play().catch(() => {});
+            fadeMusicTo(MUSIC_MAX_VOLUME);
+          }
+        } else {
+          heroVideo.pause();
+          if (musicStarted && !heroMusic.paused) {
+            fadeMusicTo(0, () => heroMusic.pause());
+          }
+        }
+      }, { threshold: 0 });
+      heroObserver.observe(heroEl);
+
+      // While the header itself is on screen, fade the music down a little
+      // as you scroll through it, and darken the overlay.
+      function updateHeroOnScroll() {
+        const heroHeight = window.innerHeight;
+        const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+        const overlay = heroEl.querySelector(".overlay");
+        if (overlay) overlay.style.background = `rgba(0,0,0,${progress * 0.5})`;
+      }
+      window.addEventListener("scroll", updateHeroOnScroll, { passive: true });
+      updateHeroOnScroll();
       // ---------- COVERFLOW ----------
       const cards = document.querySelectorAll(".coverflow .card");
       const titleEl = document.getElementById("activity-title");
@@ -2674,6 +3049,7 @@ coverflowInterval = setInterval(nextCard, 3000);
         const departmentModal = document.getElementById("departmentModal");
         activityOpenedFromDepartment = !!departmentModal?.classList.contains("active");
         overlay.classList.add("show");
+        navbar.classList.add("nav-hidden");
         overlayTitle.textContent = card.dataset.title;
         overlayDesc.textContent = card.dataset.long;
         document.getElementById("overlayLabel").textContent = card.dataset.label;
@@ -2691,6 +3067,7 @@ coverflowInterval = setInterval(nextCard, 3000);
       }
       function closeActivityOverlay() {
         overlay.classList.remove("show");
+        navbar.classList.remove("nav-hidden");
         clearInterval(galleryTimer);
         // If the activity popup was opened from a department popup,
         // keep the department popup open underneath it.
@@ -2895,7 +3272,7 @@ function makeDepartmentActivityCard(originalCard){
       <p>${originalCard.dataset.short}</p>
       <span>VIEW ACTIVITY →</span>
     </div>`;
-  wrapper.addEventListener("click",()=>openOverlay(originalCard));
+  wrapper.addEventListener("click",()=>{closeDepartmentModal();openOverlay(originalCard);});
   return wrapper;
 }
 function openDepartmentModal(index){
